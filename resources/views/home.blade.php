@@ -41,21 +41,24 @@
         <div class="col-md-8">
             <hr>
             @foreach ($posts as $post)
-    <div class="card mb-3">
-        <div class="card-header">{{ $post->title }}</div>
-        <div class="card-body">
-            <p class="card-text">{{ $post->content }}</p>
-            <p class="card-text"><small class="text-muted">Posted {{ $post->created_at->diffForHumans() }} by {{ $post->user ? $post->user->name : 'Usuario eliminado' }}</small></p>
-        </div>
-        <div class="card-footer">
-            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Eliminar</button>
-            </form>
-        </div>
-    </div>
-@endforeach
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">{{ $post->title }}</h5>
+                    <span class="text-muted">{{ $post->created_at->diffForHumans() }}</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ $post->content }}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <small class="text-muted">{{ $post->user ? $post->user->name : 'Usuario eliminado' }}</small>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-primary">Editar</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+
+    @endforeach
 
         </div>
     </div>

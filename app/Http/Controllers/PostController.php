@@ -9,6 +9,7 @@ class PostController extends Controller
 {
     public function index()
 {
+    $posts = Post::all();
     $posts = Post::with('user')->latest('created_at')->get();
 
     return view('index', compact('posts'));

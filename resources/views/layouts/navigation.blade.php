@@ -34,6 +34,9 @@
                     @endif
                 @else
                 <ul>
+                    <a href="/post" class="nav-link btn btn-outline-secondary border-0">Posts</a>
+                </ul>
+                <ul>
                     @if(auth()->user()->rol_id == 2)
                     <a href="/admin" class="nav-link btn btn-outline-secondary border-0">Administrador</a>
                     @endif

@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -32,6 +34,10 @@ Route::put('/posts/{post}', [PostController::class, 'update']);
 Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 Route::get('/admin', [UserController::class, 'admin'])->name('admin');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/post', function () {
+    return view('post');
+});
+
 
 
 
