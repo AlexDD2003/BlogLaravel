@@ -34,6 +34,9 @@
                     @endif
                 @else
                 <ul>
+                    <a href="/home" class="nav-link btn btn-outline-secondary border-0">Home</a>
+                </ul>
+                <ul>
                     <a href="/post" class="nav-link btn btn-outline-secondary border-0">Posts</a>
                 </ul>
                 <ul>
@@ -41,6 +44,7 @@
                     <a href="/admin" class="nav-link btn btn-outline-secondary border-0">Administrador</a>
                     @endif
                 </ul>
+
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}

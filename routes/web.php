@@ -25,18 +25,17 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::get('/posts/create', [PostController::class, 'create']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+//Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+Route::get('/posts', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/posts/{post}', [PostController::class, 'show']);
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
-Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 Route::get('/admin', [UserController::class, 'admin'])->name('admin');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::get('/post', function () {
-    return view('post');
-});
+Route::get('/post', [PostController::class, 'index'])->name('posts.index');
 
 
 

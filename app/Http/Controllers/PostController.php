@@ -10,9 +10,8 @@ class PostController extends Controller
     public function index()
 {
     $posts = Post::all();
-    $posts = Post::with('user')->latest('created_at')->get();
 
-    return view('index', compact('posts'));
+    return view('post', compact('posts'));
 }
 
 public function store(Request $request)
@@ -22,7 +21,7 @@ public function store(Request $request)
     $post->content = $request->content;
     $post->save();
 
-    return redirect()->route('home');
+    return redirect()->route('posts.index');
 }
 
 public function show(Post $post)
@@ -30,12 +29,13 @@ public function show(Post $post)
     return view('show', compact('post'));
 }
 
-public function destroy($id)
+
+public function destroy(Post $post)
 {
-    $post = Post::findOrFail($id);
     $post->delete();
-    return redirect()->route('posts.index')->with('success', 'El post ha sido eliminado.');
+    return redirect()->route('posts.index');
 }
+
 
 
 }

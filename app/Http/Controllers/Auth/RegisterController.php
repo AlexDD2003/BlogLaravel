@@ -71,6 +71,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'rol_id' => 1,
         ]);
+        return $user;
 
     }
 }
