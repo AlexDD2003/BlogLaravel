@@ -39,11 +39,13 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">{{ $post->title }}</h5>
+                        @if(auth()->user()->rol_id == 2)
                         <form action="{{ route('posts.destroy', $post) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger ml-2">Eliminar</button>
                         </form>
+                        @endif
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ $post->content }}</p>
